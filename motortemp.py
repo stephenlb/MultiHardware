@@ -1,3 +1,5 @@
+#Example to stream temperature and humidity values to a browser in realtime
+
 import os
 import time
 import sys
