@@ -1,10 +1,7 @@
 
 /*
- *  PubNub EON Demo with Arduino
+ *  PubNub demo to stream temperature values from Arduino to a browser
  *  Displaying the data sent by Arduino with DS18B20 temperature sensor using Johnny-Five
- *  https://github.com/pubnub/johnnyfive-eon
- *
- *  Tomomi Imura @girlie_mac
  *  License: MIT
  */
 
