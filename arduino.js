@@ -10,6 +10,7 @@
 var pubnub = require('pubnub')({
   subscribe_key: 'sub-c-2a73818c-d2d3-11e3-9244-02ee2ddab7fe',
   publish_key:   'pub-c-6dbe7bfd-6408-430a-add4-85cdfe856b47',
+  auth_key: 'device_security1234'
 });
 
 var channel = 'Arduino-node';
