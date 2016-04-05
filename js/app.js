@@ -28,7 +28,7 @@ setInterval( function() {
     var val = Math.random()*500+1000
     sensorgraph.append({ classname : 'sensor-shadow', value : val * 1.5 });
     sensorgraph.append({ classname : 'sensor',        value : val       });
-}, 400 );
+}, 1000 );
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Utility Methods
