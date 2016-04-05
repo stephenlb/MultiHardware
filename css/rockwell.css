@@ -29,17 +29,17 @@ div.container-row {
 /* Status Display */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 div.status-display {
-    margin: 5% 0;
+    margin: 6vh 0;
     display: flex;
-    font-size: 20px;
+    font-size: 5vw;
     font-family: 'Helvetica Neue';
     letter-spacing: 1px;
     color: rgba(255,255,255,1.0);
     text-align: center;
 }
 div.status-title {
-    margin: 20px 0;
-    font-size: 10px;
+    margin: 3vh 0;
+    font-size: 1.4vw;
     font-family: 'Helvetica Neue';
     font-weight: 800;
     text-transform: uppercase;
