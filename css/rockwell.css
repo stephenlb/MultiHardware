@@ -29,9 +29,9 @@ div.container-row {
 /* Status Display */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 div.status-display {
-    margin: 25% 0;
+    margin: 5% 0;
     display: flex;
-    font-size: 40px;
+    font-size: 20px;
     font-family: 'Helvetica Neue';
     letter-spacing: 1px;
     color: rgba(255,255,255,1.0);
@@ -39,7 +39,7 @@ div.status-display {
 }
 div.status-title {
     margin: 20px 0;
-    font-size: 20px;
+    font-size: 10px;
     font-family: 'Helvetica Neue';
     font-weight: 800;
     text-transform: uppercase;
