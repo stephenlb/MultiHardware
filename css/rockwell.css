@@ -1,0 +1,86 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* BASE */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+html, body, div, svg {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body {
+    background: rgba(64,59,132,1.0);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Layout */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+div.container-row {
+    flex: 1;
+    position: relative;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Status Display */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.status-display {
+    margin: 25% 0;
+    display: flex;
+    font-size: 40px;
+    font-family: 'Helvetica Neue';
+    letter-spacing: 1px;
+    color: rgba(255,255,255,1.0);
+    text-align: center;
+}
+div.status-title {
+    margin: 20px 0;
+    font-size: 20px;
+    font-family: 'Helvetica Neue';
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+}
+div.status-device-value {
+    font-weight: 200;
+    color: rgba(48,228,223,1.0);
+    flex: 1;
+}
+div.status-device-name {
+    font-weight: 100;
+    flex: 1;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* LOGO */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.logo {
+    position: absolute;
+    background: #fff url(../media/rockwell.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* SENSOR DISPLAY */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+svg#sensor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+line.sensor {
+    stroke: rgba(77,248,242,1.0);
+    stroke-width: 1.3%;
+}
+line.sensor-shadow {
+    stroke: rgba(70,70,140,1.0);
+    stroke-width: 1.3%;
+}
