@@ -10,6 +10,8 @@ html, body, div, svg {
 
 body {
     background: rgba(64,59,132,1.0);
+    /*background: #575091;*/
+    
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -28,7 +30,7 @@ div.container-row {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Status Display */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-div.status-display {
+div#status-display {
     margin: 6vh 0;
     display: flex;
     font-size: 4.4vw;
@@ -38,21 +40,42 @@ div.status-display {
     text-align: center;
 }
 div.status-title {
-    margin: 3vh 0;
+    margin: 2vh 0;
     font-size: 2vw;
     font-family: 'Helvetica Neue';
     font-weight: 800;
     text-transform: uppercase;
     color: rgba(255,255,255,0.6);
 }
+div.status-device-name {
+    padding: 2vh 0;
+    font-weight: 100;
+    flex: 7;
+}
 div.status-device-value {
+    padding: 2vh 0;
     font-weight: 200;
     color: rgba(48,228,223,1.0);
     flex: 5;
 }
-div.status-device-name {
-    font-weight: 100;
-    flex: 7;
+div.status-device-value::before {
+    content: 'Active';
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* State: Disconnected */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div#status-display div.status-device-value-alert {
+    color: #fff;
+    font-weight: 400;
+    animation: flashing 1s linear 0s infinite alternate;
+}
+div#status-display div.status-device-value-alert::before {
+    content: 'Disconnected';
+}
+@keyframes flashing {
+    0%   { background-color: rgba(255,0,0,0.0) }
+    100% { background-color: rgba(255,0,0,1.0) }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -69,6 +92,37 @@ div.logo {
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* REQUEST ACCESS */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div#request-access {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+
+    background: #fff url(../media/rockwell.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center center;
+
+    font-size: 8vw;
+    font-weight: 100;
+    line-height: 40vh;
+    font-family: 'Helvetica Neue';
+    letter-spacing: 1px;
+    color: rgba(0,0,0,0.7);
+    text-align: center;
+
+    animation: acquiring 0.6s ease-in-out 0s infinite alternate;
+}
+
+@keyframes acquiring {
+    0%   { color: rgba(255,0,0,0.5); transform:translateY(-10px) }
+    100% { color: rgba(255,255,100,1.0) }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* SENSOR DISPLAY */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 svg#sensor {
@@ -78,11 +132,9 @@ svg#sensor {
 }
 line.sensor {
     stroke: rgba(77,248,242,1.0);
-    stroke-width: 1.5%;
-    stroke-linecap: round;
+    stroke-width: 2%;
 }
 line.sensor-shadow {
     stroke: rgba(70,70,140,1.0);
-    stroke-width: 1.5%;
-    stroke-linecap: round;
+    stroke-width: 2%;
 }

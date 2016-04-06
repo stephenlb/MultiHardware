@@ -1,14 +1,29 @@
 (function(){
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// Data Feed
+// Sensor Data Feed
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-0&& subscribe({
-    subkey    : 'demo'
-,   channel   : 'demo'
-,   timetoken : 1000
-,   message   : collect_traffic
+var sensordata    = [];
+var sensordefault = 41.5;
+
+subscribe({
+    //pub-c-6dbe7bfd-6408-430a-add4-85cdfe856b47
+    subkey    : 'sub-c-2a73818c-d2d3-11e3-9244-02ee2ddab7fe'
+,   channel   : 'humeon'
+,   timetoken : 1
+,   message   : sensorfeed
 });
+
+function sensorfeed(response) {
+    response.m.forEach(function(m){
+        sensordata.push(m.d.columns[0][1]);
+        console.log(sensordata,m.d.columns[0][1]);
+    });
+}
+
+function getsensordata() {
+    return sensordata.length && sensordata.shift() || sensordefault;
+}
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // SVG Graph
@@ -25,8 +40,8 @@ var sensorgraph = grapher({
 // Demo Jazzhands
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 setInterval( function() {
-    var val = Math.random()*500+1000
-    sensorgraph.append({ classname : 'sensor-shadow', value : val * 1.5 });
+    var val = getsensordata();
+    sensorgraph.append({ classname : 'sensor-shadow', value : val * 1.4 });
     sensorgraph.append({ classname : 'sensor',        value : val       });
 }, 1000 );
 
