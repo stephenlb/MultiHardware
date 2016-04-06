@@ -1,16 +1,45 @@
 (function(){
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Configuration
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+var pubkey = 'pub-c-6dbe7bfd-6408-430a-add4-85cdfe856b47';
+var subkey = 'sub-c-2a73818c-d2d3-11e3-9244-02ee2ddab7fe';
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Command and Control
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+subscribe({
+    subkey    : subkey
+,   channel   : 'command'
+,   timetoken : 1
+,   timeout   : 300000
+,   message   : command
+});
+
+function command(response) {
+    response.m.forEach(function(m){
+        var message = m.d;
+        console.log(m,message);
+
+        if (message.type == "grant")
+            $("request-access").style.display = 'none';
+        if (message.type == "revoke")
+            $("request-access").style.display = 'block';
+    });
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Sensor Data Feed
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 var sensordata    = [];
 var sensordefault = 41.5;
 
 subscribe({
-    //pub-c-6dbe7bfd-6408-430a-add4-85cdfe856b47
-    subkey    : 'sub-c-2a73818c-d2d3-11e3-9244-02ee2ddab7fe'
+    subkey    : subkey
 ,   channel   : 'humeon'
 ,   timetoken : 1
+,   timeout   : 5000
 ,   message   : sensorfeed
 });
 
@@ -22,8 +51,25 @@ function sensorfeed(response) {
 }
 
 function getsensordata() {
-    return sensordata.length && sensordata.shift() || sensordefault;
+    return sensordata.length && sensordata.pop() || sensordefault;
 }
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Monitor Connection Status
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+var con_count = 0;
+var con_max   = 20;
+
+setInterval( function() {
+    !sensordata.length ?
+        (con_count < con_max && con_count++) :
+        (con_count > 0       && (con_count = 0));
+
+    if (con_count == con_max) $('status-display').className = 'status-alert';
+    if (con_count == 0)       $('status-display').className = ' ';
+
+    console.log(con_count);
+}, 250 );
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // SVG Graph

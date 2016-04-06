@@ -65,12 +65,12 @@ div.status-device-value::before {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* State: Disconnected */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-div#status-display div.status-device-value-alert {
+div#status-display.status-alert div.status-device-value {
     color: #fff;
     font-weight: 400;
     animation: flashing 1s linear 0s infinite alternate;
 }
-div#status-display div.status-device-value-alert::before {
+div#status-display.status-alert div.status-device-value::before {
     content: 'Disconnected';
 }
 @keyframes flashing {
@@ -106,7 +106,9 @@ div#request-access {
     background-size: 50%;
     background-position: center center;
 
-    font-size: 8vw;
+    /*display: none;*/
+
+    font-size: 9vw;
     font-weight: 100;
     line-height: 40vh;
     font-family: 'Helvetica Neue';
@@ -118,8 +120,8 @@ div#request-access {
 }
 
 @keyframes acquiring {
-    0%   { color: rgba(255,0,0,0.5); transform:translateY(-10px) }
-    100% { color: rgba(255,255,100,1.0) }
+    0%   { color: rgba(255,100,0,1.0); transform:translateY(-20px) }
+    100% { color: rgba(220,200,50,1.0) }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
